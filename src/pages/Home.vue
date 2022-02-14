@@ -11,7 +11,10 @@
             <router-link replace class="list-group-item " active-class="active" to="/home/message">Message</router-link>
             </li>
         </ul>
+        <!-- 保持活跃，防止切换自动销毁 -->
+        <keep-alive include="News">
         <router-view></router-view>
+        </keep-alive>
     </div>
 </div> 
 

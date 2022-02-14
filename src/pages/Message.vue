@@ -5,7 +5,7 @@
           <!-- 跳转路由并携带query参数，to的字符串写法
 				<router-link :to="`/home/message/detail?id=${m.id}&title=${m.title}`">{{m.title}}</router-link>&nbsp;&nbsp; -->
             <!-- 跳转路由并携带params参数，to的字符串写法 -->
-            <router-link replace :to="`/home/message/detail/${m.id}/${m.title}`">{{m.title}}</router-link>&nbsp;&nbsp;
+            <!-- <router-link replace :to="`/home/message/detail/${m.id}/${m.title}`">{{m.title}}</router-link>&nbsp;&nbsp; -->
 
 				<!-- 跳转路由并携带query参数，to的对象写法 -->
 				<!-- <router-link :to="{
@@ -24,16 +24,18 @@
 
 
                 <!-- 跳转路由并携带params参数，to的对象写法 -->
-                <!-- <router-link :to="{
-					path:'/home/message/detail',  //params参数，对象写法不允许用path
+                <router-link :to="{
+					name:'xiangqing',  //params参数，对象写法不允许用path
 					query:{
 						id:m.id,
 						title:m.title
 					}
 				}">
 					{{m.title}}
-                    
-				</router-link> -->
+				</router-link>
+                <button @click="pushShow(m)">push查看</button>
+                <button @click="replaceShow(m)">replace查看</button>
+
 
         </li>
         </ul>
@@ -44,16 +46,35 @@
 </template>
 <script>
 export default {
-    name:'Message',
-    data() {
-        return {
-            messageList:[
-                {id:'001',title:'消息001'},
-                {id:'002',title:'消息002'},
-                {id:'003',title:'消息003'},
-            ]
+  name: "Message",
+  data() {
+    return {
+      messageList: [
+        { id: "001", title: "消息001" },
+        { id: "002", title: "消息002" },
+        { id: "003", title: "消息003" }
+      ]
+    };
+  },
+  methods: {
+    pushShow(m) {
+      this.$router.push({
+        name: "xiangqing",
+        query: {
+          id: m.id,
+          title: m.title
         }
+      });
     },
-
-}
+    replaceShow(m) {
+      this.$router.replace({
+        name: "xiangqing",
+        query: {
+          id: m.id,
+          title: m.title
+        }
+      });
+    }
+  }
+};
 </script>

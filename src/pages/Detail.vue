@@ -9,7 +9,6 @@
     <li>a:{{id}}</li>
     <li>b:{{title}}</li>
 </ul>
-
 </template>
 <script>
 export default {
